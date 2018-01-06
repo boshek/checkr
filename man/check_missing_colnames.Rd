@@ -4,7 +4,8 @@
 \alias{check_missing_colnames}
 \title{Check Missing Colnames}
 \usage{
-check_missing_colnames(x, colnames, x_name = substitute(x), error = TRUE)
+check_missing_colnames(x, colnames, x_name = lazyeval::expr_text(x),
+  error = TRUE)
 }
 \arguments{
 \item{x}{The data to check.}

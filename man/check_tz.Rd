@@ -4,7 +4,7 @@
 \alias{check_tz}
 \title{Check TimeZone}
 \usage{
-check_tz(x, tz = "UTC", x_name = substitute(x), error = TRUE)
+check_tz(x, tz = "UTC", x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

@@ -13,10 +13,9 @@
 #' check_flag(FALSE, error = FALSE)
 #' check_flag(c(FALSE, TRUE), error = FALSE)
 check_flag <- function(x,
-                       x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                        error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+  check_string(x_name)
   check_flag_internal(error)
 
   check_vector(x, values = TRUE, length = 1,

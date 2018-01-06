@@ -14,12 +14,11 @@
 #' check_sorted(1:2, error = FALSE)
 #' check_sorted(2:1, error = FALSE)
 check_sorted <- function(x,
-                         x_name = substitute(x),
+                         x_name = lazyeval::expr_text(x),
                          error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+  check_string_internal(x_name)
   check_flag_internal(error)
-
+  
   if (is.unsorted(x, na.rm = TRUE)) {
     on_fail(x_name, " must be sorted", error = error)
   }

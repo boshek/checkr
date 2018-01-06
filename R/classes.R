@@ -14,12 +14,11 @@
 #' check_classes(list(), "list")
 #' check_classes(list(), "numeric", error = FALSE)
 check_classes <- function(x, classes = character(0),
-                     exclusive = FALSE,
-                     order = FALSE,
-                     x_name = substitute(x),
-                     error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-  
+                          exclusive = FALSE,
+                          order = FALSE,
+                          x_name = lazyeval::expr_text(x),
+                          error = TRUE) {
+  check_string_internal(x_name)
   check_vector(classes, "", unique = TRUE)
   check_flag_internal(exclusive)
   check_flag_internal(order)
@@ -35,7 +34,7 @@ check_classes <- function(x, classes = character(0),
     check_inherits(x, classes, x_name = x_name, error = error)
     return(invisible(x))
   }
-    
+  
   if (exclusive) {
     if (order) {
       if (!identical(x_classes, classes))

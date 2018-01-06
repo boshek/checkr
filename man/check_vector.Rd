@@ -5,8 +5,8 @@
 \title{Check Vector}
 \usage{
 check_vector(x, values, length = c(0L, .Machine$integer.max),
-  unique = FALSE, sorted = FALSE, named = NA, x_name = substitute(x),
-  error = TRUE)
+  unique = FALSE, sorted = FALSE, named = NA,
+  x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

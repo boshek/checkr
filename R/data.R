@@ -33,10 +33,9 @@ check_data <- function(x,
                        exclusive = FALSE,
                        order = FALSE,
                        key = character(0),
-                       x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                        error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-  
+  check_string_internal(x_name) 
   check_inherits(x, "data.frame", x_name = x_name)
 
   check_flag(error)

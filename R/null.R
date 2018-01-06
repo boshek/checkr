@@ -10,12 +10,12 @@
 #' check_null(1, error = FALSE)
 #' check_null(NULL, error = FALSE)
 check_null <- function(x,
-                         x_name = substitute(x),
-                         error = TRUE) {
-  x_name <- deparse_x_name(x_name)
+                       x_name = lazyeval::expr_text(x),
+                       error = TRUE) {
 
+  check_string(x_name)
   check_flag_internal(error)
-
+  
   if (!is.null(x)) on_fail(x_name, " must be NULL", error = error)
   invisible(x)
 }

@@ -6,5 +6,5 @@ test_that("nas", {
   expect_error(check_nas(c(TRUE, NA), NA), "c[(]TRUE, NA[)] must only include missing values")
   expect_error(check_nas(c(TRUE, NA), TRUE), "c[(]TRUE, NA[)] must not include missing values")
   expect_identical(check_nas(NA_character_, NA), NA_character_)
-  expect_error(check_nas(NA_character_, 1), "NA must not include missing values")
+  expect_error(check_nas(NA_character_, 1), "NA_character_ must not include missing values")
 })

@@ -12,12 +12,11 @@
 #' names(x) <- "y"
 #' check_unnamed(x, error = FALSE)
 check_unnamed <- function(x,
-                         x_name = substitute(x),
-                         error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+                          x_name = lazyeval::expr_text(x),
+                          error = TRUE) {
+  check_string_internal(x_name)
   check_flag_internal(error)
-
+  
   if(!is.null(names(x))) {
     on_fail(x_name, " must be unnamed", error = error)
   }

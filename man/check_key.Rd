@@ -4,7 +4,8 @@
 \alias{check_key}
 \title{Check Key}
 \usage{
-check_key(x, key = names(x), x_name = substitute(x), error = TRUE)
+check_key(x, key = names(x), x_name = lazyeval::expr_text(x),
+  error = TRUE)
 }
 \arguments{
 \item{x}{The data to check.}

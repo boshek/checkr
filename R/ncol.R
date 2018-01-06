@@ -11,10 +11,9 @@
 #' check_ncol(data.frame(x = 1), error = FALSE)
 #' check_ncol(data.frame(x = 1:2), ncol = 1, error = FALSE)
 check_ncol <- function(x, ncol = c(1L, 2147483647L),
-                         x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                          error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+  check_string_internal(x_name)
   check_count_range_internal(ncol)
 
   check_flag_internal(error)

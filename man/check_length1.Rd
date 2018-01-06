@@ -4,7 +4,7 @@
 \alias{check_length1}
 \title{Check Length One}
 \usage{
-check_length1(x, x_name = substitute(x), error = TRUE)
+check_length1(x, x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

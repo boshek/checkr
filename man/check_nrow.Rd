@@ -4,7 +4,7 @@
 \alias{check_nrow}
 \title{Check nrow}
 \usage{
-check_nrow(x, nrow = c(1L, 2147483647L), x_name = substitute(x),
+check_nrow(x, nrow = c(1L, 2147483647L), x_name = lazyeval::expr_text(x),
   error = TRUE)
 }
 \arguments{

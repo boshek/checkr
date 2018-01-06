@@ -12,10 +12,10 @@
 #' check_missing_colnames(data, c("y", "x", "a"), error = FALSE)
 #' check_missing_colnames(data, "a", error = FALSE)
 check_missing_colnames <- function(x, colnames, 
-                                   x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                                    error = TRUE) {
   
-  x_name <- deparse_x_name(x_name)
+  check_string_internal(x_name)
   
   check_vector(colnames, "", unique = TRUE, named = FALSE)
   check_flag_internal(error)
@@ -49,10 +49,9 @@ check_missing_colnames <- function(x, colnames,
 #' check_missing_names(vec, c("y", "x", "a"), error = FALSE)
 #' check_missing_names(vec, "a", error = FALSE)
 check_missing_names <- function(x, names, 
-                                   x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                                    error = TRUE) {
-  
-  x_name <- deparse_x_name(x_name)
+  check_string_internal(x_name)
   
   check_named(x, x_name = x_name)
   

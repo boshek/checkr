@@ -5,7 +5,7 @@
 \title{Check Colnames}
 \usage{
 check_colnames(x, colnames = character(0), exclusive = FALSE,
-  order = FALSE, x_name = substitute(x), error = TRUE)
+  order = FALSE, x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The data to check.}

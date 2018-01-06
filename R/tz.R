@@ -11,9 +11,9 @@
 #' check_tz(Sys.Date(), error = FALSE)
 #' x <- as.POSIXct("2000-01-02 03:04:55", tz = "Etc/GMT+8")
 #' check_tz(x, tz = "PST8PDT", error = FALSE)
-check_tz <- function(x, tz = "UTC", x_name = substitute(x),
-                         error = TRUE) {
-  x_name <- deparse_x_name(x_name)
+check_tz <- function(x, tz = "UTC", x_name = lazyeval::expr_text(x),
+                     error = TRUE) {
+  check_string_internal(x_name)
   
   tz <- check_string(tz, coerce = TRUE)
   check_flag_internal(error)

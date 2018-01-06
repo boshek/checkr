@@ -5,7 +5,7 @@
 \title{Check Levels}
 \usage{
 check_levels(x, levels, exclusive = TRUE, order = TRUE,
-  x_name = substitute(x), error = TRUE)
+  x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

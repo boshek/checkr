@@ -5,7 +5,7 @@
 \title{Check Data}
 \usage{
 check_data(x, values, nrow = c(0L, 2147483647L), exclusive = FALSE,
-  order = FALSE, key = character(0), x_name = substitute(x),
+  order = FALSE, key = character(0), x_name = lazyeval::expr_text(x),
   error = TRUE)
 }
 \arguments{

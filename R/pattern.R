@@ -14,10 +14,10 @@
 #' check_pattern("b ", "b", error = FALSE)
 #' check_pattern("b ", "^b$", error = FALSE)
 check_pattern <- function(x, pattern, all = TRUE,
-                          x_name = substitute(x),
-                         error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+                          x_name = lazyeval::expr_text(x),
+                          error = TRUE) {
+  check_string_internal(x_name)
+  
   check_string_internal(pattern)
   check_flag_internal(all)
   check_flag_internal(error)

@@ -18,27 +18,27 @@
 #' check_names(vec, c("a"), error = FALSE)
 check_names <- function(x, names = character(0), exclusive = FALSE, order = FALSE,
                         unique = FALSE,
-                         x_name = substitute(x),
-                         error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+                        x_name = lazyeval::expr_text(x),
+                        error = TRUE) {
+  check_string_internal(x_name)
+  
   check_flag_internal(unique)
-  check_vector(names, "", unique = unique)
+  check_vector(names, "", x_name = "names", unique = unique)
   check_flag_internal(exclusive)
   check_flag_internal(order)
   check_flag_internal(error)
   
   check_named(x, x_name = x_name, unique = unique, error = error)
-
+  
   names(names) <- NULL
   x_names <- names(x)
   
   if(!length(names)) {
     if(exclusive && length(x_names))
-        on_fail(x_name, " must not have any elements", error = error)
+      on_fail(x_name, " must not have any elements", error = error)
     return(x)
   }
-
+  
   if (exclusive) {
     if (order) {
       if (!identical(x_names, names))

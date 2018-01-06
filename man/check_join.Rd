@@ -4,8 +4,8 @@
 \alias{check_join}
 \title{Check Join}
 \usage{
-check_join(x, y, by = NULL, x_name = substitute(x),
-  y_name = substitute(y), error = TRUE)
+check_join(x, y, by = NULL, x_name = lazyeval::expr_text(x),
+  y_name = lazyeval::expr_text(y), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

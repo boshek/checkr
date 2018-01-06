@@ -4,7 +4,8 @@
 \alias{check_named}
 \title{Check Named}
 \usage{
-check_named(x, unique = FALSE, x_name = substitute(x), error = TRUE)
+check_named(x, unique = FALSE, x_name = lazyeval::expr_text(x),
+  error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

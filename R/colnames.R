@@ -16,16 +16,16 @@
 #' check_colnames(data, c("y", "x"), order = TRUE, error = FALSE)
 #' check_colnames(data, c("a"), error = FALSE)
 check_colnames <- function(x, colnames = character(0), exclusive = FALSE, order = FALSE,
-                         x_name = substitute(x),
-                         error = TRUE) {
-
-  x_name <- deparse_x_name(x_name)
-
+                           x_name = lazyeval::expr_text(x),
+                           error = TRUE) {
+  
+  check_string_internal(x_name)
+  
   check_vector(colnames, "", unique = TRUE)
   check_flag_internal(exclusive)
   check_flag_internal(order)
   check_flag_internal(error)
-
+  
   names(colnames) <- NULL
   x_colnames <- colnames(x)
   
@@ -33,10 +33,10 @@ check_colnames <- function(x, colnames = character(0), exclusive = FALSE, order 
   
   if(!length(colnames)) {
     if(exclusive && length(x_colnames))
-        on_fail(x_name, " must not have any columns", error = error)
+      on_fail(x_name, " must not have any columns", error = error)
     return(x)
   }
-
+  
   if (exclusive) {
     if (order) {
       if (!identical(x_colnames, colnames))

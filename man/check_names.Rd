@@ -5,7 +5,7 @@
 \title{Check Names}
 \usage{
 check_names(x, names = character(0), exclusive = FALSE, order = FALSE,
-  unique = FALSE, x_name = substitute(x), error = TRUE)
+  unique = FALSE, x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

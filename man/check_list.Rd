@@ -5,7 +5,8 @@
 \title{Check List}
 \usage{
 check_list(x, values, length = c(0L, .Machine$integer.max), unique = FALSE,
-  sorted = FALSE, named = NA, x_name = substitute(x), error = TRUE)
+  sorted = FALSE, named = NA, x_name = lazyeval::expr_text(x),
+  error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

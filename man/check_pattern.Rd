@@ -4,7 +4,7 @@
 \alias{check_pattern}
 \title{Check Pattern}
 \usage{
-check_pattern(x, pattern, all = TRUE, x_name = substitute(x),
+check_pattern(x, pattern, all = TRUE, x_name = lazyeval::expr_text(x),
   error = TRUE)
 }
 \arguments{

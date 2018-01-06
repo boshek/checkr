@@ -4,7 +4,8 @@
 \alias{check_string}
 \title{Check String}
 \usage{
-check_string(x, coerce = FALSE, x_name = substitute(x), error = TRUE)
+check_string(x, coerce = FALSE, x_name = lazyeval::expr_text(x),
+  error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

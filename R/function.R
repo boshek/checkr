@@ -14,12 +14,12 @@
 #' check_function(character, nargs = 0L, error = FALSE)
 check_function <- function(x, 
                            nargs = c(0L, .Machine$integer.max),
-                           x_name = substitute(x),
+                           x_name = lazyeval::expr_text(x),
                            error = TRUE) {
-  x_name <- deparse_x_name(x_name)
+  check_string_internal(x_name)
   
   check_count_range_internal(nargs)
-
+  
   check_flag_internal(error)
   
   if (!is.function(x)) on_fail(x_name, " must be a function", error = TRUE)

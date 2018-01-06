@@ -5,7 +5,7 @@
 \title{Check nlevels}
 \usage{
 check_nlevels(x, nlevels = c(1L, .Machine$integer.max),
-  x_name = substitute(x), error = TRUE)
+  x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The data to check.}

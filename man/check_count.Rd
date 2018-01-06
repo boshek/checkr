@@ -4,7 +4,8 @@
 \alias{check_count}
 \title{Check Count}
 \usage{
-check_count(x, coerce = FALSE, x_name = substitute(x), error = TRUE)
+check_count(x, coerce = FALSE, x_name = lazyeval::expr_text(x),
+  error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

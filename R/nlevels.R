@@ -12,9 +12,9 @@
 #' check_nlevels(factor(1), nlevels = 2, error = FALSE)
 check_nlevels <- function(x,
                          nlevels = c(1L, .Machine$integer.max),
-                         x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                          error = TRUE) {
-  x_name <- deparse_x_name(x_name)
+  check_string_internal(x_name)
 
   check_count_range_internal(nlevels)
 

@@ -4,7 +4,7 @@
 \alias{check_missing_names}
 \title{Check Missing Names}
 \usage{
-check_missing_names(x, names, x_name = substitute(x), error = TRUE)
+check_missing_names(x, names, x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The named object to check.}

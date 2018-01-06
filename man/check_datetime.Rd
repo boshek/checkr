@@ -4,7 +4,7 @@
 \alias{check_datetime}
 \title{Check Date Time}
 \usage{
-check_datetime(x, x_name = substitute(x), error = TRUE)
+check_datetime(x, x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

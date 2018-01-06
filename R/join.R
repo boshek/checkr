@@ -19,11 +19,11 @@
 #' check_join(data1, data2, by = c(x = "y"), error = FALSE)
 check_join <- function(x, y,
                        by = NULL,
-                       x_name = substitute(x),
-                       y_name = substitute(y),
+                       x_name = lazyeval::expr_text(x),
+                       y_name = lazyeval::expr_text(y),
                        error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-  y_name <- deparse_y_name(y_name)
+  check_string_internal(x_name)
+  check_string_internal(y_name)
   
   check_data(x, x_name = x_name)
   check_data(y, x_name = y_name)
@@ -39,10 +39,10 @@ check_join <- function(x, y,
     }
     names(by) <- by
   } else if(is.null(names(by))) names(by) <- by
-    
+  
   check_colnames(x, names(by), x_name = x_name, error = TRUE)
   check_colnames(y, by, x_name = y_name, error = TRUE)
-
+  
   check_key(y, by, x_name = y_name, error = error)
   
   if(!nrow(x)) return(invisible(x))
@@ -57,7 +57,7 @@ check_join <- function(x, y,
   suppressWarnings(z <- merge(x, y, by.x = names(by), by.y = by))
   
   if(!identical(sort(unique(z$..ID)), sort(..ID))) {
-        on_fail("join between ", x_name, " and ", y_name, " violates referential integrity", error = error)
+    on_fail("join between ", x_name, " and ", y_name, " violates referential integrity", error = error)
   }
   x$..ID <- NULL
   invisible(x)

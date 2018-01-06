@@ -4,7 +4,7 @@
 \alias{check_ncol}
 \title{Check Number of Columns}
 \usage{
-check_ncol(x, ncol = c(1L, 2147483647L), x_name = substitute(x),
+check_ncol(x, ncol = c(1L, 2147483647L), x_name = lazyeval::expr_text(x),
   error = TRUE)
 }
 \arguments{

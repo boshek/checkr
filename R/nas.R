@@ -1,18 +1,17 @@
 check_nas <- function(x,
-                         values,
-                         x_name = substitute(x),
-                         error = TRUE) {
+                      values,
+                      x_name = lazyeval::expr_text(x),
+                      error = TRUE) {
+  check_string_internal(x_name)
   
-  x_name <- deparse_x_name(x_name)
-
   check_flag_internal(error)
-
+  
   if(!length(values)) return(invisible(x))
-
+  
   nas <- is.na(values)
-
+  
   if(!length(nas)) return(invisible(x))
-
+  
   if(!any(nas) && any(is.na(x))) {
     on_fail(x_name, " must not include missing values", error = error)
   } else if (all(nas) && !all(is.na(x))) {

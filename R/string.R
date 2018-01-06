@@ -14,17 +14,17 @@
 #' check_string("1", error = FALSE)
 #' check_string(c("1", "2"), error = FALSE)
 check_string <- function(x,
-                        coerce = FALSE,
-                       x_name = substitute(x),
-                       error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+                         coerce = FALSE,
+                         x_name = lazyeval::expr_text(x),
+                         error = TRUE) {
+  check_string_internal(x_name)
+  
   check_flag_internal(coerce)
   check_flag_internal(error)
   
   if(coerce && is.factor(x))
     x <- as.character(x)
-
+  
   check_vector(x, values = character(1), length = 1,
                x_name = x_name, error = error)
 }

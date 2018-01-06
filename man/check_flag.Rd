@@ -4,7 +4,7 @@
 \alias{check_flag}
 \title{Check Flag}
 \usage{
-check_flag(x, x_name = substitute(x), error = TRUE)
+check_flag(x, x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

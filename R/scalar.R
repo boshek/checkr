@@ -7,15 +7,15 @@
 #' @export
 #'
 check_scalar <- function(x,
-                         x_name = substitute(x),
+                         x_name = lazyeval::expr_text(x),
                          error = TRUE) {
   
   .Deprecated("check_length1()")
   # replace with check_scalar that includes checking of class (as more commonly required)
-  x_name <- deparse_x_name(x_name)
-
+  check_string_internal(x_name)
+  
   if (!is.atomic(x)) error(x_name, " must be an atomic vector")
-
+  
   check_length(x, x_name = x_name, length = 1, error = error)
   check_unnamed(x, x_name = x_name, error = error)
   invisible(x)

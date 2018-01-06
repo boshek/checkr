@@ -14,9 +14,9 @@
 #' check_unique(NULL, error = FALSE)
 #' check_unique(list(), error = FALSE)
 check_unique <- function(x,
-                         x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                          error = TRUE) {
-  x_name <- deparse_x_name(x_name)
+  check_string_internal(x_name)
 
   check_flag_internal(error)
 

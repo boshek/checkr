@@ -22,24 +22,6 @@ check_count_internal <- function(x)
 check_count_range_internal <- function(x)
   if (!is_count_range(x)) error(substitute(x), " must be one or two counts")
 
-deparse_x_name <- function(x_name) {
-  if (!is.character(x_name)) x_name <- deparse(x_name) 
-  if (isTRUE(is.na(x_name))) x_name <- "NA"
-  
-  check_string_internal(x_name)
-
-  x_name
-}
-
-deparse_y_name <- function(y_name) {
-  if (!is.character(y_name)) y_name <- deparse(y_name) 
-  if (isTRUE(is.na(y_name))) y_name <- "NA"
-  
-  check_string_internal(y_name)
-
-  y_name
-}
-
 error <- function(...) stop(..., call. = FALSE)
 
 warning <- function(...) {
@@ -73,10 +55,9 @@ tz <- function(x) {
 
 check_class_internal <- function(x,
                          values,
-                         x_name = substitute(x),
+                       x_name = lazyeval::expr_text(x),
                          error = TRUE) {
-  x_name <- deparse_x_name(x_name)
-
+  check_string_internal(x_name)
   check_flag_internal(error)
 
   class <- class(values)[1]

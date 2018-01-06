@@ -4,7 +4,7 @@
 \alias{check_inherits}
 \title{Check Inherits}
 \usage{
-check_inherits(x, class, x_name = substitute(x), error = TRUE)
+check_inherits(x, class, x_name = lazyeval::expr_text(x), error = TRUE)
 }
 \arguments{
 \item{x}{The object to check.}

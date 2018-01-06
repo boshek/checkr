@@ -17,6 +17,6 @@ test_that("checkor works", {
   expect_error(checkor(stop("that"), stop("this"), stop("that")), "^that OR this$")
 
   fun <- function(x) checkor(check_flag(x))
-  expect_error(checkor(fun(1)), "x must be class logical")
+  expect_error(checkor(fun(1)), "1 must be class logical")
 })
 
